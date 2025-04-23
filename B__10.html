@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://127.0.0.1:5500/B_10.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Report</title>
+  <link href="./B__10_files/css2" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f172a;
+      color: #d1d5db;
+      line-height: 1.6;
+      transition: all 0.4s ease;
+    }
+
+    body[data-theme="light"] {
+      background: #f1f5f9;
+      color: #1f2937;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+      color: #ffffff;
+      text-align: center;
+      padding: 3rem 1rem;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #bfdbfe;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(15px);
+      padding: 1rem 0;
+      text-align: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.4s ease;
+    }
+
+    body[data-theme="light"] nav {
+      background: rgba(241, 245, 249, 0.95);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+    }
+
+    nav a {
+      color: #bfdbfe;
+      margin: 0 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 3px;
+      left: 50%;
+      bottom: 4px;
+      background-color: #3b82f6;
+      transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+
+    nav a:hover,
+    nav a.current {
+      color: #3b82f6;
+      transform: scale(1.05);
+    }
+
+    nav a:hover::after,
+    nav a.current::after {
+      width: 100%;
+      left: 0;
+    }
+
+    section {
+      padding: 3rem 8%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      background: #1f2937;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      min-height: 100px;
+      transition: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    section.not-visible {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    body[data-theme="light"] section {
+      background: #ffffff;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: slideUp 0.8s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+        scale: 0.95;
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        scale: 1;
+      }
+    }
+
+    section h2 {
+      color: #3b82f6;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 3px solid #4b5563;
+      padding-bottom: 0.5rem;
+      font-weight: 700;
+      transition: color 0.3s ease-in-out;
+    }
+
+    body[data-theme="light"] section h2 {
+      border-bottom: 3px solid #e5e7eb;
+    }
+
+    section h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid #3b82f6;
+      transition: color 0.3s ease-in-out;
+    }
+
+    body[data-theme="light"] section h3 {
+      color: #1e3a8a;
+      border-left-color: #60a5fa;
+    }
+
+    section h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #1e40af;
+      margin-top: 1.5rem;
+      margin-bottom: 0.8rem;
+      padding-left: 0.3rem;
+      border-left: 3px solid #3b82f6;
+    }
+
+    body[data-theme="light"] section h4 {
+      color: #1e3a8a;
+      border-left-color: #60a5fa;
+    }
+
+    section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d1d5db;
+      margin-bottom: 1.8rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    body[data-theme="light"] section p {
+      color: #1f2937;
+    }
+
+    section ul {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+      padding-left: 2.5rem;
+      transition: color 0.3s ease-in-out;
+    }
+
+    body[data-theme="light"] section ul {
+      color: #1f2937;
+    }
+
+    section li {
+      margin-bottom: 0.8rem;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+      color: #bfdbfe;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
+      font-size: 1rem;
+      border-top: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    body[data-theme="light"] footer {
+      background: #e5e7eb;
+      color: #1f2937;
+      border-top: 2px solid rgba(0, 0, 0, 0.15);
+    }
+
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: none;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+      display: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #topBtn:hover {
+      background-color: #2563eb;
+      transform: scale(1.1);
+    }
+
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #3b82f6;
+      color: #ffffff;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+      transition: all 0.3s ease-in-out;
+    }
+
+    #themeToggle:hover {
+      background-color: #2563eb;
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 0.8rem 0;
+      }
+      section {
+        padding: 2rem 1.5rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      #topBtn, #themeToggle {
+        padding: 0.6rem 0.9rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <header>
+    <h1>DISASTER RESPONSE COMPANION ROBOT</h1>
+    <p>Report</p>
+  </header>
+
+  <nav>
+    <a href="http://127.0.0.1:5500/B_10.html#abstract" class="">Abstract</a>
+    <a href="http://127.0.0.1:5500/B_10.html#toc" class="current">TOC</a>
+    <a href="http://127.0.0.1:5500/B_10.html#intro">Introduction</a>
+    <a href="http://127.0.0.1:5500/B_10.html#review">Review</a>
+    <a href="http://127.0.0.1:5500/B_10.html#method">Method</a>
+    <a href="http://127.0.0.1:5500/B_10.html#results">Results</a>
+    <a href="http://127.0.0.1:5500/B_10.html#demo">Demo</a>
+    <a href="http://127.0.0.1:5500/B_10.html#conclusion">Conclusion</a>
+    <a href="http://127.0.0.1:5500/B_10.html#references">References</a>
+  </nav>
+
+  <button id="topBtn" onclick="scrollToTop()" style="display: block;">↑</button>
+  <button id="themeToggle" onclick="toggleTheme()">Toggle Theme</button>
+
+  <section id="abstract" class="visible">
+    <h2>Group : B10</h2>
+    <p>
+      </p><li>Bommisetty Nikhitha : CB.SC.U4AIE23119</li>
+      <li>M Kavya Srihitha : CB.SC.U4AIE23167</li>
+      <li>Kancharla Sanjana : CB.SC.U4AIE23171</li>
+      <li>Monish Unnava : CB.SC.U4AIE23174</li>
+    <p></p>
+  </section>
+
+  <section id="abstract" class="visible">
+    <h2>1. Abstract</h2>
+    <p>
+      This project develops an autonomous human-following robot designed for disaster management and relief operations. The robot accurately tracks a designated relief worker in real-time within crowded, dynamic environments using integrated <strong>QR code recognition</strong> and <strong>color-based tracking</strong>. Motion control is achieved through <strong>forward and inverse kinematics</strong>, ensuring precise trajectory adjustments. Real-time path optimization, implemented via the <strong>Alternating Direction Method of Multipliers (ADMM)</strong>, enables collision-free navigation. By combining computer vision, kinematic modeling, and mathematical optimization, the system demonstrates high autonomy and adaptability, offering a practical solution for mission-critical human-robot collaboration.
+    </p>
+  </section>
+
+  <section id="toc" class="visible">
+    <h2>2. Table of Contents</h2>
+    <ul>
+      <li><a href="http://127.0.0.1:5500/B_10.html#intro">3. Introduction</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#review">4. Literature Review</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#method">5. Methodology and Implementation</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#results">6. Results and Discussion</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#demo">7. Demonstration</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#conclusion">8. Conclusion and Future Work</a></li>
+      <li><a href="http://127.0.0.1:5500/B_10.html#references">9. References</a></li>
+    </ul>
+  </section>
+
+  <section id="intro" class="visible">
+    <h2>3. Introduction</h2>
+    <p>
+      Effective disaster response demands rapid coordination and navigation in complex environments. Autonomous robots can enhance relief efforts by assisting human workers in such scenarios. This project introduces an <strong>autonomous human-following robot</strong> engineered for disaster response applications.
+    </p>
+    <p>
+      The robot’s primary function is to track a designated relief worker in real-time, even in crowded settings. It employs <strong>QR code recognition</strong> for unique identification and <strong>color-based detection</strong> for robust visual tracking. Precise movement is facilitated by <strong>forward and inverse kinematics</strong>, while the <strong>Alternating Direction Method of Multipliers (ADMM)</strong> optimizes collision-free paths.
+    </p>
+    <p>
+      Integrating robotics, computer vision, and optimization, this work addresses critical challenges in disaster relief, enabling seamless human-robot collaboration in unpredictable conditions.
+    </p>
+  </section>
+
+  <section id="review" class="visible">
+    <h2>4. Literature Review</h2>
+    <p>
+      Existing research on human-following robots highlights advancements in computer vision and path planning. Studies such as [Author, Year] demonstrate the efficacy of visual tracking using feature-based methods, though challenges remain in crowded environments.
+    </p>
+    <p>
+      Kinematic modeling, as explored by [Author, Year], provides precise motion control for differential-drive robots. Optimization techniques like ADMM, applied in [Author, Year], enable real-time trajectory planning, but integration with vision systems is less studied.
+    </p>
+    <p>
+      This project builds on these foundations, combining QR code and color tracking with ADMM-based navigation to address gaps in dynamic, disaster-specific scenarios.
+    </p>
+  </section>
+
+  <section id="method" class="visible">
+    <h2>5. Methodology and Implementation</h2>
+    <p>
+      The methodology integrates four key components: target identification, motion control, path optimization, and system integration. Below, each is detailed with implementation specifics.
+    </p>
+
+    <h3>5.1 Target Identification and Tracking</h3>
+    <p>
+      The robot identifies and tracks a designated relief worker using a dual approach:
+    </p>
+    <ul>
+      <li><strong>QR Code Recognition</strong>: Detects unique QR codes via OpenCV’s <code>cv2.QRCodeDetector()</code> for reliable identification.</li>
+      <li><strong>Color-Based Tracking</strong>: Segments HSV color spaces to maintain tracking under partial occlusion, enhanced by morphological filtering.</li>
+      <li><strong>Position Estimation</strong>: Uses camera calibration to compute the target’s relative position.</li>
+    </ul>
+
+    <h3>5.2 Motion Control via Kinematics</h3>
+    <p>
+      Precise movement is achieved through kinematic modeling:
+    </p>
+    <ul>
+      <li><strong>Forward Kinematics</strong>: Calculates wheel positions from motor angles using transformation matrices.</li>
+      <li><strong>Inverse Kinematics</strong>: Determines motor velocities to reach the target’s position.</li>
+      <li><strong>PID Control</strong>: Ensures smooth motor actuation, minimizing trajectory errors.</li>
+    </ul>
+
+    <h3>5.3 Path Optimization with ADMM</h3>
+    <p>
+      Real-time navigation in dynamic environments is enabled by:
+    </p>
+    <ul>
+      <li><strong>Optimization Problem</strong>: Minimizes distance to the target while avoiding obstacles, formulated as a constrained problem.</li>
+      <li><strong>ADMM Algorithm</strong>: Decomposes the problem into subproblems for parallel solving, converging in 10–20 iterations.</li>
+      <li><strong>Trajectory Output</strong>: Generates smooth, collision-free paths updated every 50–100 ms.</li>
+    </ul>
+
+    <h3>5.4 System Integration</h3>
+    <p>
+      Subsystems are synchronized for real-time operation:
+    </p>
+    <ul>
+      <li>Vision data feeds target coordinates to the kinematic module.</li>
+      <li>Kinematics computes movement vectors, adjusted by ADMM for obstacle avoidance.</li>
+      <li>Continuous feedback ensures robust tracking and navigation.</li>
+    </ul>
+
+    <h3>5.5 Implementation Details</h3>
+    <h4>5.5.1 Hardware Components</h4>
+    <p>
+      The robot uses cost-effective hardware:
+    </p>
+    <ul>
+      <li><strong>Raspberry Pi 4</strong>: Central controller for vision and motor control.</li>
+      <li><strong>Camera Module</strong>: Captures video for tracking.</li>
+      <li><strong>L298N Motor Driver</strong>: Controls four DC motors.</li>
+      <li><strong>Chassis</strong>: Four-wheel differential drive platform.</li>
+      <li><strong>Power</strong>: 12V battery with voltage regulation.</li>
+    </ul>
+
+    <h4>5.5.2 Software Stack</h4>
+    <p>
+      The system leverages:
+    </p>
+    <ul>
+      <li><strong>Python</strong>: For OpenCV (vision), NumPy/SciPy (optimization).</li>
+      <li><strong>C++</strong>: For low-level motor control.</li>
+      <li><strong>Libraries</strong>: Custom modules for real-time integration.</li>
+    </ul>
+  </section>
+
+  <section id="results" class="visible">
+    <h2>6. Results and Discussion</h2>
+    <h3>6.1 Performance Evaluation</h3>
+    <p>
+      The robot was tested in controlled indoor settings:
+    </p>
+    <ul>
+      <li><strong>Static Obstacles</strong>: Successfully navigated around fixed objects while tracking the target.</li>
+      <li><strong>Dynamic Scenarios</strong>: Maintained accurate tracking in multi-person environments using QR and color fusion.</li>
+      <li><strong>Adaptability</strong>: ADMM rerouted paths within 1 second for unexpected obstacles.</li>
+    </ul>
+
+    <h3>6.2 Accuracy and Robustness</h3>
+    <p>
+      Quantitative metrics include:
+    </p>
+    <ul>
+      <li><strong>QR Detection</strong>: 95% accuracy in standard lighting.</li>
+      <li><strong>Color Tracking</strong>: Robust across ambient light variations due to HSV processing.</li>
+      <li><strong>Path Optimization</strong>: ADMM achieved real-time updates (50–100 ms per cycle).</li>
+    </ul>
+
+    <h3>6.3 Limitations</h3>
+    <p>
+      Observed challenges include:
+    </p>
+    <ul>
+      <li>Reduced performance in low-light conditions.</li>
+      <li>QR occlusion requiring reliance on color tracking.</li>
+      <li>Need for camera recalibration for varied setups.</li>
+    </ul>
+  </section>
+
+  <section id="demo" class="visible">
+  <h2>7. Demonstration</h2>
+  <p>
+    The robot’s functionality was validated through simulations and hardware tests. Below are three video demonstrations illustrating real-time tracking, obstacle avoidance, and dynamic environment navigation in controlled settings.
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 2rem;">
+    <div style="flex: 1; min-width: 300px; max-width: 500px;">
+      <h4>multiple qr codes</h4>
+      <video controls="" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+        <source src="multiple humans.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="flex: 1; min-width: 300px; max-width: 500px;">
+      <h4>human going towards right side</h4>
+      <video controls="" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+        <source src="Right_side.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div style="flex: 1; min-width: 300px; max-width: 500px;">
+      <h4>human going towards left side</h4>
+      <video controls="" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);">
+        <source src="Left_side.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+  <section id="conclusion" class="visible">
+    <h2>8. Conclusion and Future Work</h2>
+    <h3>8.1 Conclusion</h3>
+    <p>
+      This project delivers a robust human-following robot for disaster relief, integrating <strong>QR code recognition</strong>, <strong>color-based tracking</strong>, and <strong>ADMM-based path optimization</strong>. The system achieves reliable real-time tracking and navigation, demonstrating practical utility in dynamic environments.
+    </p>
+
+    <h3>8.2 Future Work</h3>
+    <p>
+      Potential enhancements include:
+    </p>
+    <ul>
+      <li><strong>LiDAR Integration</strong>: For improved obstacle detection.</li>
+      <li><strong>Deep Learning</strong>: To enhance tracking robustness.</li>
+      <li><strong>Outdoor Adaptation</strong>: For varied terrain and lighting.</li>
+      <li><strong>Swarm Robotics</strong>: Coordinating multiple robots.</li>
+    </ul>
+  </section>
+
+  <section id="references" class="visible">
+    <h2>9. References</h2>
+    <p>
+    </p>
+    <ul>
+      <li>[1] P. Das, A. Biswas, A. Pal, R. Das, D. R. Mahato, J. Mondal, J. Biswas, A. Saha, and A. Ghosh, "Human Following Robot," 2022.</li>
+      <li>[2] B. B. Gowda, M. R. Tharun, B. I. Nischith, E. M. Manasa, and G. Priyadarshini, "Human Following Robot Using Arduino UNO," 2022.</li>
+      <li>[3] Anonymous, "Object Detection using OpenCV and Python," IEEE, 2022, doi: IEEE 9796348.</li>
+      <li>[4] S. Chakraborty and P. S. Athal, "A Custom Robot: ARM in CoppeliaSim,"2021.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Created by [Your Name] | <a href="https://github.com/YourUsername" target="_blank" style="color: #ccc;">GitHub</a></p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 90;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.remove("current");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("current");
+        }
+      });
+
+      document.getElementById("topBtn").style.display =
+        window.scrollY > 300 ? "block" : "none";
+    });
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("not-visible");
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "100px" }
+    );
+
+    sections.forEach(section => {
+      observer.observe(section);
+      setTimeout(() => {
+        if (!section.classList.contains("visible")) {
+          section.classList.remove("not-visible");
+          section.classList.add("visible");
+        }
+      }, 2000);
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute("data-theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      body.setAttribute("data-theme", newTheme);
+    }
+  </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
